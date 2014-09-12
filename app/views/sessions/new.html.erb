@@ -1,0 +1,10 @@
+<div class="col-lg-4 col-lg-offset-4">
+  <%= form_tag sessions_path, { method: 'post', role: 'form', class: 'form-inline' } do %>
+    <h2 class="form-signin-heading">Enter your name</h2>
+
+    <div class="form-group">
+      <%= text_field_tag 'name', nil, placeholder: "Your Name", required: true, autofocus: true, class: 'form-control' %>
+    </div>
+    <button class="btn btn-lg btn-primary" type="submit">Sign in</button>
+  <% end %>  
+</div>

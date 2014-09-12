@@ -8,7 +8,23 @@
 </head>
 <body>
 
-<%= yield %>
-
+  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">PaperTrail - Jutsu #8</a>
+      </div>
+      <%- if current_user %>
+        <div class='navbar-text'>
+          Logged in as <%= current_user.name %>
+          |
+          <%= link_to 'Logout', logout_sessions_path, method: 'delete' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="container">
+    <%= yield %>
+  </div>
+      
 </body>
 </html>

@@ -1,4 +1,5 @@
 class DocumentsController < ApplicationController
+  before_action :require_user
   before_action :set_document, only: [:show, :edit, :update, :destroy]
 
   # GET /documents
@@ -70,5 +71,9 @@ class DocumentsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def document_params
       params.require(:document).permit(:name, :content, :user_id)
+    end
+
+    def require_user
+      redirect_to new_session_path unless current_user
     end
 end
