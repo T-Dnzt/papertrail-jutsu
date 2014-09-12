@@ -29,7 +29,7 @@ class DocumentsController < ApplicationController
     @document.user_id = current_user.id
 
     if @document.save
-      redirect_to documents_path
+      redirect_to documents_path, notice: "New document saved."
     else
       render :new
     end
@@ -39,7 +39,7 @@ class DocumentsController < ApplicationController
   # PATCH/PUT /documents/1.json
   def update
     if @document.update(document_params)
-      redirect_to documents_path
+      redirect_to documents_path, notice: "Document updated."
     else
       render :edit
     end
