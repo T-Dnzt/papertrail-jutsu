@@ -26,6 +26,7 @@ class DocumentsController < ApplicationController
   # POST /documents.json
   def create
     @document = Document.new(document_params)
+    @document.user_id = current_user.id
 
     if @document.save
       redirect_to documents_path
