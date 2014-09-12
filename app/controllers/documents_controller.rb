@@ -27,14 +27,10 @@ class DocumentsController < ApplicationController
   def create
     @document = Document.new(document_params)
 
-    respond_to do |format|
-      if @document.save
-        format.html { redirect_to @document, notice: 'Document was successfully created.' }
-        format.json { render :show, status: :created, location: @document }
-      else
-        format.html { render :new }
-        format.json { render json: @document.errors, status: :unprocessable_entity }
-      end
+    if @document.save
+      redirect_to documents_path
+    else
+      render :new
     end
   end
 
