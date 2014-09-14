@@ -16,18 +16,12 @@
   <tbody>
     <%- document.versions.reverse.each do |version| %>
       <tr>
-        <td><%= version.index %></td>
+        <td><%= version.id %></td>
         <td><%= version.created_at %></td>
         <td><%= find_version_author_name(version) %></td>
         <td><%= version.event.humanize %></td>
-
-        <%- if version == document.versions.last %>
-          <td>Current Version</td>
-        <% else %>
-          <td><%= link_to 'Diff', '' %></td>
-          <td><%= link_to 'Rollback', '' %></td>
-          <td><%= link_to 'Delete', '' %></td>
-        <% end %>
+        <td><%= link_to 'Diff', diff_document_version_path(document, version) %></td>
+        <td><%= link_to 'Rollback', rollback_document_version_path(document, version), method: 'PATCH' %></td>
       </tr>
     <% end %>
   </tbody>

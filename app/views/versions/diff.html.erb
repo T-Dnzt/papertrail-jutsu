@@ -1,0 +1,15 @@
+<div class='row mt'>
+  <div class='col-sm-6'>
+    <%= render 'documents/show', document_1: @version.reify, document_2: @document, version: @version, previous: true %>
+  </div>
+  
+  <div class='col-sm-6'>
+    <%= render 'documents/show', document_1: @document, document_2: @version.reify, version: @version, previous: false %>
+  </div>
+
+</div>
+
+<div class='fr'>
+  <%= link_to 'Back', edit_document_path(@document), class: 'btn btn-danger' %>
+  <%= link_to 'Rollback', rollback_document_version_path(@document, @version), class: 'btn btn-primary', method: 'PATCH' %>
+</div>
