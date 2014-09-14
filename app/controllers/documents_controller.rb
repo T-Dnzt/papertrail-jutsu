@@ -66,7 +66,4 @@ class DocumentsController < ApplicationController
       params.require(:document).permit(:name, :content, :user_id)
     end
 
-    def require_user
-      redirect_to new_session_path unless current_user
-    end
 end

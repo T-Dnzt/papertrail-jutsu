@@ -10,6 +10,16 @@ body {
   float: right;
 }
 
+.mt {
+  margin-top: 20px;
+}
+
+.diff {
+  p {
+    padding: 5px;
+  }
+}
+
 textarea.form-control.document-text-area {
   height: 300px;
 }
