@@ -1,0 +1,34 @@
+<h2>Previous Versions</h2>
+
+<table class='table'>
+  <thead>
+    <tr>
+      <th>Index</th>
+      <th>Date</th>
+      <th>Author</th>
+      <th>Event</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%- document.versions.reverse.each do |version| %>
+      <tr>
+        <td><%= version.index %></td>
+        <td><%= version.created_at %></td>
+        <td><%= find_version_author_name(version) %></td>
+        <td><%= version.event.humanize %></td>
+
+        <%- if version == document.versions.last %>
+          <td>Current Version</td>
+        <% else %>
+          <td><%= link_to 'Diff', '' %></td>
+          <td><%= link_to 'Rollback', '' %></td>
+          <td><%= link_to 'Delete', '' %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
