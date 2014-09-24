@@ -55,6 +55,10 @@ class DocumentsController < ApplicationController
     end
   end
 
+  def deleted
+    @documents = PaperTrail::Version.where(item_type: 'Document', event: 'destroy')
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_document

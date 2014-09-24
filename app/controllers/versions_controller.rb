@@ -1,6 +1,14 @@
 class VersionsController < ApplicationController
   before_action :require_user
   before_action :set_document_and_version, only: [:diff, :rollback, :destroy]
+
+  def bringback
+    version = PaperTrail::Version.find(params[:id])
+    @object = version.reify
+    @object.save
+    version.delete
+    redirect_to root_path, notice: 'The object was successfully brought back!'
+  end
   
   def diff
   end
