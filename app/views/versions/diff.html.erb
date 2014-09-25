@@ -1,11 +1,25 @@
 <div class='row mt'>
-  <div class='col-sm-6'>
-    <%= render 'documents/show', document_1: @version.reify, document_2: @document, version: @version, previous: true %>
+
+  <div class='col-sm-12'>
+    <h2><%= "Diff between Version #{@version.id} and Current Version" %></h2>
+    <style><%= Diffy::CSS %></style>
+    <div class='well diff'>
+      <p>
+        <strong>Name:</strong>
+        <%= diff(@document.name, @version.reify.name) %>
+      </p>
+
+      <p>
+        <strong>Content:</strong>
+        <%= diff(@document.content, @version.reify.content) %>
+      </p>
+    </div>
+    <p>
+    <%= "Version authored by #{find_version_author_name(@version)} on #{@version.created_at} by '#{@version.event.humanize}'." %>
+    </p>
   </div>
+
   
-  <div class='col-sm-6'>
-    <%= render 'documents/show', document_1: @document, document_2: @version.reify, version: @version, previous: false %>
-  </div>
 
 </div>
 
