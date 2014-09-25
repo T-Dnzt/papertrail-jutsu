@@ -56,7 +56,7 @@ class DocumentsController < ApplicationController
   end
 
   def deleted
-    @documents = PaperTrail::Version.where(item_type: 'Document', event: 'destroy')
+    @documents = DocumentVersion.where(event: 'destroy')
   end
 
   private

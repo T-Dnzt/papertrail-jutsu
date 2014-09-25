@@ -3,7 +3,7 @@ class VersionsController < ApplicationController
   before_action :set_document_and_version, only: [:diff, :rollback, :destroy]
 
   def bringback
-    version = PaperTrail::Version.find(params[:id])
+    version = DocumentVersion.find(params[:id])
     @object = version.reify
     @object.save
     version.delete
