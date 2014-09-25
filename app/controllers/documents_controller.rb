@@ -39,7 +39,7 @@ class DocumentsController < ApplicationController
   # PATCH/PUT /documents/1.json
   def update
     if @document.update(document_params)
-      redirect_to documents_path, notice: "Document updated."
+      redirect_to edit_document_path(@document), notice: "Document updated."
     else
       render :edit
     end
