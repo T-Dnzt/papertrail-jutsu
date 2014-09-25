@@ -7,6 +7,7 @@
       <th>Date</th>
       <th>Author</th>
       <th>Event</th>
+      <th>Word Count</th>
       <th></th>
       <th></th>
       <th></th>
@@ -18,8 +19,9 @@
       <tr>
         <td><%= version.id %></td>
         <td><%= version.created_at %></td>
-        <td><%= find_version_author_name(version) %></td>
+        <td><%= version.author_username %></td>
         <td><%= version.event.humanize %></td>
+        <td><%= version.word_count %></td>
         <td><%= link_to 'Diff', diff_document_version_path(document, version) %></td>
         <td><%= link_to 'Rollback', rollback_document_version_path(document, version), method: 'PATCH' %></td>
       </tr>
